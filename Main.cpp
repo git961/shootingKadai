@@ -2,6 +2,7 @@
 #include "SceneManager.h"
 #include "AbstractScene.h"
 #include "GameMainScene.h"
+#include "fps.h"
 
 /*********
 * プログラムの開始
@@ -21,12 +22,19 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetDrawScreen(DX_SCREEN_BACK);	// 描画先画面を裏にする
 
 	SceneManager SceneManager(dynamic_cast<AbstractScene*>(new GameMainScene));
+	fps fp;
+
+	//ループ前にFPS計測を初期化
+	fp.Reset_fps();
 
 	// ゲームループ
 	while (ProcessMessage() != -1) {
 
 		SceneManager.Update();
 		SceneManager.Draw();
+
+		//fps固定
+		fp.fpsUpdate();
 
 		//nullptrが帰ってきたら、ゲームを終了させる
 		if (SceneManager.Change() == nullptr) {
