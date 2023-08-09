@@ -1,6 +1,6 @@
 #pragma once
-#include "SphereCllider.h"
-class CharaBase : public SphereCllider
+#include "SphereCollider.h"
+class CharaBase : public SphereCollider
 {
 private:
 	float speed;
