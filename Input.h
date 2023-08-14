@@ -5,9 +5,10 @@ class Input
 private:
 
 	XINPUT_STATE getkey;
-	static char keyflg;
-	static char nowkey;
-	static char oldkey;
+	static int Btnflg[];
+	static int nowBtn[];
+	static int oldBtn[];
+	static int Btnnum;
 
 public:
 	//関数プロトタイプ宣言
@@ -15,6 +16,6 @@ public:
 	~Input();
 
 	void InputUpdate();
-	int CheckKey(int key);
+	int CheckBtn(int getBtn);
 };
 

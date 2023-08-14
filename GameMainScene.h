@@ -9,6 +9,7 @@ public:
 	int* enemy[2];	//
 	int* bullets[2];
 
+	int Color;
 
 	//プロトタイプ宣言
 	GameMainScene();						//コンストラクタ

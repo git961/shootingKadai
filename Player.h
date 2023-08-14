@@ -6,7 +6,12 @@ private:
 	int score;
 	int weapon;
 
-	int Update() override;
+public:
+	//プロトタイプ宣言
+	Player();
+	~Player();
+
+	int Update(GameMainScene* gMain) override;
 	void Draw()const override;
 	int Hit() override;
 };
