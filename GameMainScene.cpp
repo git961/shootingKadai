@@ -1,11 +1,9 @@
 #include "GameMainScene.h"
 #include "DxLib.h"
 #include "fps.h"
-#include "Input.h"
 #include "Player.h"
-Input input;
-XINPUT_STATE inpu;
 Player p;
+XINPUT_STATE inpu;
 
 GameMainScene::GameMainScene() {
 	Color = 0;
@@ -16,29 +14,21 @@ GameMainScene::~GameMainScene() {
 }
 
 void GameMainScene::Update() {
-	input.InputUpdate();
 
-	// 入力状態を取得
 	GetJoypadXInputState(DX_INPUT_PAD1, &inpu);
 	Color = GetColor(255, 255, 255);
-
+	p.Update(0);
 }
 
 void GameMainScene::Draw() const{
 
-	if (input.CheckBtn(XINPUT_BUTTON_A) == TRUE) {
-		DrawFormatString(0, 300, 0xffffff, "a");
-	}
 	
-	if (input.CheckBtn(XINPUT_BUTTON_B) == TRUE) {
-		DrawFormatString(10, 300, 0xffffff, "B");
-	}
 
 
 	p.Draw();
 	//えねみーはエネミーのCPPでストラクトで増やして
 	// ポインタ型で呼ぶ
-	//// 画面に XINPUT_STATE の中身を描画
+	// 画面に XINPUT_STATE の中身を描画
 	//DrawFormatString(0, 0, Color, "LeftTrigger:%d RightTrigger:%d",
 	//	inpu.LeftTrigger, inpu.RightTrigger);
 	//DrawFormatString(0, 16, Color, "ThumbLX:%d ThumbLY:%d",

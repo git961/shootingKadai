@@ -6,6 +6,7 @@ private:
 	int score;
 	int weapon;
 
+
 public:
 	//プロトタイプ宣言
 	Player();

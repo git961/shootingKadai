@@ -1,4 +1,5 @@
 #pragma once
+
 #include "AbstractScene.h"
 class GameMainScene:public AbstractScene
 {
@@ -22,6 +23,4 @@ public:
 	void Draw() const override;			//•`‰æˆ—
 	AbstractScene* Change() override;	//‘JˆÚæ‚Ìw’è
 
-	
 };
-

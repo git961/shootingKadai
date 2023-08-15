@@ -4,9 +4,11 @@
 
 class CharaBase : public SphereCollider
 {
-private:
+protected:
 	float speed;
 	int image;
+	int Movex;
+	int Movey;
 
 public:
 	

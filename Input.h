@@ -10,12 +10,17 @@ private:
 	static int oldBtn[];
 	static int Btnnum;
 
+	static int crossflg;
+	static int nowcross;
+	static int oldcross;
+
 public:
 	//関数プロトタイプ宣言
 	Input();
 	~Input();
-
+	
 	void InputUpdate();
 	int CheckBtn(int getBtn);
+	int CheckMovekey(int getmkey);
 };
 

@@ -1,5 +1,4 @@
 #pragma once
-#pragma once
 #ifndef FPS_H_
 #define FPS_H_
 #include"DxLib.h"
