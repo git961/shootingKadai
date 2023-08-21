@@ -7,8 +7,6 @@ class CharaBase : public SphereCollider
 protected:
 	float speed;
 	int image;
-	int Movex;
-	int Movey;
 
 public:
 	

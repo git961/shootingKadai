@@ -5,10 +5,7 @@ class GameMainScene:public AbstractScene
 {
 public:
 	//ƒƒ“ƒo•Ï”
-	int player;
 	int life;	//c‹@
-	int* enemy[2];	//
-	int* bullets[2];
 
 	int Color;
 

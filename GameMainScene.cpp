@@ -2,30 +2,42 @@
 #include "DxLib.h"
 #include "fps.h"
 #include "Player.h"
-Player p;
+#include "Enemy.h"
+Player *player;
+Enemy* enemy[6];
 XINPUT_STATE inpu;
 
 GameMainScene::GameMainScene() {
 	Color = 0;
+	
+	for (int i = 0; i < 5; i++) {
+		enemy[i] = new Enemy();
+	}
+	player = new Player();
 }
 
 GameMainScene::~GameMainScene() {
-
+	delete enemy;
+	delete player;
 }
 
 void GameMainScene::Update() {
 
 	GetJoypadXInputState(DX_INPUT_PAD1, &inpu);
 	Color = GetColor(255, 255, 255);
-	p.Update(0);
+	player->Update(0);
 }
 
 void GameMainScene::Draw() const{
 
 	
-
-
-	p.Draw();
+	for (int i = 0; i < 5; i++) {
+		enemy[i]->Draw();
+	}
+	if (player->CheckCollision(enemy[0]) == TRUE) {
+		DrawFormatString(100, 100, 0xffffff, "HIT!!!");
+	}
+	player->Draw();
 	//えねみーはエネミーのCPPでストラクトで増やして
 	// ポインタ型で呼ぶ
 	// 画面に XINPUT_STATE の中身を描画
@@ -44,7 +56,12 @@ void GameMainScene::Draw() const{
 }
 
 void GameMainScene::HitCheck() {
+	player->CheckCollision(enemy[0]);
+	enemy[0]->CheckCollision(player);
 
+	if (player->CheckCollision(enemy[0]) == TRUE) {
+
+	}
 };
 
 //遷移先の指定

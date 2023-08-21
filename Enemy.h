@@ -8,6 +8,10 @@ private:
 	int point;//ƒXƒRƒA‚Ì‰ÁZ—Ê
 	int weapon;
 
+public:
+	Enemy();
+	~Enemy();
+
 	int Update(GameMainScene* gMain) override;
 	void Draw()const override;
 	int Hit() override;
