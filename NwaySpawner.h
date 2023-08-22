@@ -3,12 +3,15 @@
 class NwaySpawner : public BulletsSpawner
 {
 private:
-	float speed;//速度
-	float angle;//角度
-	float acceleration;//速度の変化量
-	float angulVelocity;//角度の変化量
-
+	int numBullets;//発射する弾の数
+	float baseAngle;//発射する最初の弾の向き
+	//45度と135度の違い？
+	float angleDiff;//弾同士の角度差
+	//45開始でその後+45+45する？
 public:
-	int Shoot() override;
+	NwaySpawner();
+	~NwaySpawner();
+
+	int Shoot(GameMainScene* gMain) override;
 };
 

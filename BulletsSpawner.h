@@ -1,4 +1,5 @@
 #pragma once
+#include "GameMainScene.h"
 class BulletsSpawner
 {
 private:
@@ -8,8 +9,11 @@ private:
 	float angulVelocity;//角度の変化量
 
 public:
+	BulletsSpawner();
+	~BulletsSpawner();
+
 	//引数にゲームメインシーンのポインタを受け取る
 	//SpawnBulletで弾を生成する
-	virtual int Shoot();
+	virtual int Shoot(GameMainScene* gMain);
 };
 

@@ -2,6 +2,7 @@
 #include "SceneManager.h"
 #include "AbstractScene.h"
 #include "GameMainScene.h"
+#include "Input.h"
 #include "fps.h"
 
 /*********
@@ -23,7 +24,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 	SceneManager SceneManager(dynamic_cast<AbstractScene*>(new GameMainScene));
 	fps fp;
-
+	Input input;
 	//ループ前にFPS計測を初期化
 	fp.Reset_fps();
 
@@ -35,6 +36,10 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 		//fps固定
 		fp.fpsUpdate();
+
+		if (input.CheckBtn(XINPUT_BUTTON_BACK)==TRUE){
+			break;
+		}
 
 		//nullptrが帰ってきたら、ゲームを終了させる
 		if (SceneManager.Change() == nullptr) {

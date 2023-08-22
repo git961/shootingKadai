@@ -1,14 +1,16 @@
 #include "DxLib.h"
 #include "Player.h"
 #include "Input.h"
+#include "BulletsSpawner.h"
 
 Input input;
+BulletsSpawner* bs;
 
 Player::Player() {
 	score = 0;
 	speed = 10;
-	Playerx = 100;
-	Playery = 100;
+	location.x = 100;
+	location.y = 100;
 }
 
 Player::~Player() {
@@ -16,6 +18,7 @@ Player::~Player() {
 
 int Player::Update(GameMainScene* gMain) {
 	
+	bs->Shoot(gMain);
 
 	input.InputUpdate();
 	//Playerà⁄ìÆèàóù
@@ -60,6 +63,8 @@ int Player::Update(GameMainScene* gMain) {
 void Player::Draw()const {
 	
 	DrawCircle(location.x, location.y, radius, 0xffffff, TRUE);
+	DrawCircle(location.x, location.y, 2, 0x0000ff, TRUE);
+
 	//DrawFormatString(0, 0, 0xffffff, "Movex%d", 100 + Movex);
 	//DrawFormatString(0, 20, 0xffffff, "Movey%d", 100 + Movey);
 

@@ -33,9 +33,10 @@ void GameMainScene::Draw() const{
 	
 	for (int i = 0; i < 5; i++) {
 		enemy[i]->Draw();
-	}
-	if (player->CheckCollision(enemy[0]) == TRUE) {
-		DrawFormatString(100, 100, 0xffffff, "HIT!!!");
+
+		if (player->CheckCollision(enemy[i]) == TRUE) {
+			DrawFormatString(100, 100, 0xffffff, "HIT!!!");
+		}
 	}
 	player->Draw();
 	//えねみーはエネミーのCPPでストラクトで増やして
@@ -56,13 +57,23 @@ void GameMainScene::Draw() const{
 }
 
 void GameMainScene::HitCheck() {
-	player->CheckCollision(enemy[0]);
-	enemy[0]->CheckCollision(player);
 
-	if (player->CheckCollision(enemy[0]) == TRUE) {
+	for (int i = 0; i < 5; i++) {
+		player->CheckCollision(enemy[i]);
+		enemy[i]->CheckCollision(player);
+
+		if (player->CheckCollision(enemy[i]) == TRUE) {
+
+		}
 
 	}
 };
+
+void GameMainScene::SpawnBullet() {
+	//弾をnewする？
+	//nwayspawnerを持ってくる
+
+}
 
 //遷移先の指定
 AbstractScene* GameMainScene::Change()

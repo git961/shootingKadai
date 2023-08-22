@@ -5,8 +5,6 @@ class Player : public CharaBase
 private:
 	int score;
 	int weapon;
-	int Playerx;
-	int Playery;
 
 public:
 	//プロトタイプ宣言

@@ -2,7 +2,8 @@
 #include "DxLib.h"
 
 Enemy::Enemy() {
-
+	location.x = 200;
+	location.y = 200;
 }
 
 Enemy::~Enemy() {
@@ -14,7 +15,8 @@ int Enemy::Update(GameMainScene* gMain) {
 }
 
 void Enemy::Draw()const {
-	DrawBox(0, 0, 30, 30, 0x00ffff, TRUE);
+	DrawCircle(location.x, location.y, radius,0x00ffff,TRUE);
+	DrawCircle(location.x, location.y, 2,0x0000ff,TRUE);
 }
 
 int Enemy::Hit() {

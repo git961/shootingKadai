@@ -18,7 +18,7 @@ int SphereCollider::CheckCollision(SphereCollider* collision) {
 	int b = location.y - collision->location.y;
 	int c = sqrt(a * a + b * b);
 	
-	if (c <= radius) {
+	if (c <= radius+20) {
 		return TRUE;
 	}
 

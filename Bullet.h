@@ -9,9 +9,12 @@ private:
 	float acceleration; //‘¬“x‚Ì•Ï‰»—Ê
 	float angulVelocity; //Šp“x‚Ì•Ï‰»—Ê
 
+public:
 //ƒƒ“ƒoŠÖ”
+	Bullet();
+	~Bullet();
 	void Update();
 	void Draw()const;
-	int GetDamalge();
+	void GetDamage();
 };
 
