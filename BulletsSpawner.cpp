@@ -1,10 +1,10 @@
 #include "BulletsSpawner.h"
 
 BulletsSpawner::BulletsSpawner() {
-	speed = 5;
-	angle = 45.0;
-	acceleration = 0;//speed/時間？加速度
-	angulVelocity = 0;
+	speed = 1;
+	angle = 0.625f;
+	acceleration = 5/60;//speed/時間？加速度
+	angulVelocity = 0.625f;
 }
 
 BulletsSpawner::~BulletsSpawner() {
@@ -12,8 +12,17 @@ BulletsSpawner::~BulletsSpawner() {
 }
 
 int BulletsSpawner::Shoot(GameMainScene* gMain) {
-	gMain->SpawnBullet();
 
+	for (int i = 0; i < 5; i++) {
+		if (gMain->bullet[i] != nullptr) {
+			gMain->bullet[i]->speed=speed;
+			gMain->bullet[i]->angle=angle;
+			gMain->bullet[i]->acceleration=acceleration;
+			gMain->bullet[i]->angulVelocity=angulVelocity;
+
+
+		}
+	}
 
 	return 0;
 }

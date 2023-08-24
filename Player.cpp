@@ -11,6 +11,7 @@ Player::Player() {
 	speed = 10;
 	location.x = 100;
 	location.y = 100;
+	bs = new BulletsSpawner;
 }
 
 Player::~Player() {

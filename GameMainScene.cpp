@@ -1,11 +1,6 @@
 #include "GameMainScene.h"
 #include "DxLib.h"
-#include "fps.h"
-#include "Player.h"
-#include "Enemy.h"
-Player *player;
-Enemy* enemy[6];
-XINPUT_STATE inpu;
+
 
 GameMainScene::GameMainScene() {
 	Color = 0;
@@ -17,7 +12,9 @@ GameMainScene::GameMainScene() {
 }
 
 GameMainScene::~GameMainScene() {
-	delete enemy;
+	for (int i = 0; i < 5; i++) {
+		delete enemy[i];
+	}
 	delete player;
 }
 
@@ -25,35 +22,45 @@ void GameMainScene::Update() {
 
 	GetJoypadXInputState(DX_INPUT_PAD1, &inpu);
 	Color = GetColor(255, 255, 255);
-	player->Update(0);
+	player->Update(this);
+
+	if (input.CheckBtn(XINPUT_BUTTON_A) == TRUE) {
+		SpawnBullet();
+	}
+
+	for (int i = 0; i < 5; i++) {
+
+		if (bullet[i] != nullptr) {
+			bullet[i]->Update();
+
+		}
+
+	}
+
+
 }
 
 void GameMainScene::Draw() const{
 
 	
 	for (int i = 0; i < 5; i++) {
-		enemy[i]->Draw();
+		//enemy[i]->Draw();
 
 		if (player->CheckCollision(enemy[i]) == TRUE) {
 			DrawFormatString(100, 100, 0xffffff, "HIT!!!");
 		}
+
+		if (bullet[i] != nullptr) {
+			bullet[i]->Draw();
+			DrawFormatString(100*i, 100, 0xffffff, "HIT!!!");
+
+		}
+
 	}
 	player->Draw();
-	//えねみーはエネミーのCPPでストラクトで増やして
-	// ポインタ型で呼ぶ
-	// 画面に XINPUT_STATE の中身を描画
-	//DrawFormatString(0, 0, Color, "LeftTrigger:%d RightTrigger:%d",
-	//	inpu.LeftTrigger, inpu.RightTrigger);
-	//DrawFormatString(0, 16, Color, "ThumbLX:%d ThumbLY:%d",
-	//	inpu.ThumbLX, inpu.ThumbLY);
-	//DrawFormatString(0, 32, Color, "ThumbRX:%d ThumbRY:%d",
-	//	inpu.ThumbRX, inpu.ThumbRY);
-	//DrawString(0, 64, "Button", Color);
-	//for (int i = 0; i < 16; i++)
-	//{
-	//	DrawFormatString(64 + i % 8 * 64, 64 + i / 8 * 16, Color,
-	//		"%2d:%d", i, inpu.Buttons[i]);
-	//}
+
+	
+
 }
 
 void GameMainScene::HitCheck() {
@@ -70,8 +77,10 @@ void GameMainScene::HitCheck() {
 };
 
 void GameMainScene::SpawnBullet() {
-	//弾をnewする？
-	//nwayspawnerを持ってくる
+	//弾をnewする
+	for (int i = 0; i < 5; i++) {
+		bullet[i] = new Bullet();
+	}
 
 }
 

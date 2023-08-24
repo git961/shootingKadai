@@ -1,6 +1,7 @@
 #pragma once
 #include "SphereCollider.h"
-#include "GameMainScene.h"
+
+class GameMainScene;
 
 class CharaBase : public SphereCollider
 {

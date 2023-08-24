@@ -1,10 +1,23 @@
 #pragma once
 
 #include "AbstractScene.h"
+#include "fps.h"
+#include "Player.h"
+#include "Enemy.h"
+#include "Bullet.h"
+#include "Input.h"
+
 class GameMainScene:public AbstractScene
 {
 public:
 	//ƒƒ“ƒo•Ï”
+
+	Player* player;
+	Enemy* enemy[6];
+	Bullet* bullet[20];
+	XINPUT_STATE inpu;
+	Input input;
+
 	int life;	//c‹@
 
 	int Color;
