@@ -4,14 +4,14 @@
 #include "BulletsSpawner.h"
 
 Input input;
-BulletsSpawner* bs;
+BulletsSpawner* weapon;
 
 Player::Player() {
 	score = 0;
 	speed = 10;
 	location.x = 100;
 	location.y = 100;
-	bs = new BulletsSpawner;
+	weapon = new BulletsSpawner;
 }
 
 Player::~Player() {
@@ -19,7 +19,7 @@ Player::~Player() {
 
 int Player::Update(GameMainScene* gMain) {
 	
-	bs->Shoot(gMain);
+	if(input.CheckBtn(XINPUT_BUTTON_A)==TRUE)weapon->Shoot(gMain);
 
 	input.InputUpdate();
 	//PlayerˆÚ“®ˆ—
@@ -75,4 +75,12 @@ void Player::Draw()const {
 int Player::Hit() {
 	
 	return 0;
+}
+
+int Player::getplx() {
+	return location.x;
+}
+
+int Player::getply() {
+	return location.y;
 }

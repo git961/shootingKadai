@@ -4,7 +4,6 @@ class Player : public CharaBase
 {
 private:
 	int score;
-	int weapon;
 
 public:
 	//プロトタイプ宣言
@@ -14,5 +13,8 @@ public:
 	int Update(GameMainScene* gMain) override;
 	void Draw()const override;
 	int Hit() override;
+
+	int getplx();
+	int getply();
 };
 

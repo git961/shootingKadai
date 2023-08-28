@@ -1,12 +1,18 @@
 #pragma once
 #include "GameMainScene.h"
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 class BulletsSpawner
 {
 private:
 	float speed;//‘¬“x
-	float angle;//Šp“x
+	float angle[3];//Šp“x
 	float acceleration;//‘¬“x‚Ì•Ï‰»—Ê
 	float angulVelocity;//Šp“x‚Ì•Ï‰»—Ê
+	
+	double deg[3] = {45,90,135};
+	double rad;
 
 public:
 	BulletsSpawner();

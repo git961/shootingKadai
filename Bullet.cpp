@@ -1,9 +1,10 @@
 #include "Bullet.h"
+#include "Player.h"
 #include "DxLib.h"
 
+
 Bullet::Bullet() {
-	location.x=100;
-	location.y=100;
+
 }
 
 Bullet::~Bullet() {
@@ -11,13 +12,25 @@ Bullet::~Bullet() {
 }
 
 void Bullet::Update() {
-	location.x = speed*angulVelocity;
-	location.y = speed*angulVelocity;
+
+	acceleration = speed * 3;
+	for (int i = 0; i < 3; i++) {
+		angulVelocity = angle[i] / (angle[i] / speed);
+	}
+	
+		getx = getx + acceleration;
+		gety = gety + angulVelocity;
+	
 }
 
 void Bullet::Draw()const {
+	//入れるangleを毎回全部入れてしまうと1つ1つのオブジェクトが
+	//三つのangleを持ってる状態になって意味がない
+		DrawCircle(getx,gety, 5, 0xffff00, TRUE);
+	
 
-	DrawCircle(location.x+speed, location.y, 25, 0xffffff, TRUE);
+//	DrawFormatString(0, 0, 0xffffff, "bx%f", bx);
+//	DrawFormatString(0, 30, 0xffffff, "by%f", by);
 }
 
 void Bullet::GetDamage() {
