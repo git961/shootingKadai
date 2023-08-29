@@ -22,19 +22,17 @@ void GameMainScene::Update() {
 
 	GetJoypadXInputState(DX_INPUT_PAD1, &inpu);
 	Color = GetColor(255, 255, 255);
-	player->Update(this);
 
 	if (input.CheckBtn(XINPUT_BUTTON_A) == TRUE) {
 		SpawnBullet();
 	}
 
-	for (int i = 0; i < 5; i++) {
 
+	player->Update(this);
+	for (int i = 0; i < 20; i++) {
 		if (bullet[i] != nullptr) {
 			bullet[i]->Update();
-
 		}
-
 	}
 
 
@@ -43,7 +41,7 @@ void GameMainScene::Update() {
 void GameMainScene::Draw() const{
 
 	
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 3; i++) {
 		//enemy[i]->Draw();
 
 		if (player->CheckCollision(enemy[i]) == TRUE) {
@@ -78,11 +76,12 @@ void GameMainScene::HitCheck() {
 
 void GameMainScene::SpawnBullet() {
 	//’e‚ðnew‚·‚é
-	for (int i = 0; i < 3; i++) {
-		for (int j = 0; j < 3; j++) {
+	
+		for (int j = 0; j < 20; j++) {
 			bullet[j] = new Bullet();
+			//bullet[j]->by += 100*j;
 		}
-	}
+	
 
 }
 

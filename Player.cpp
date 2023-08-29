@@ -18,9 +18,9 @@ Player::~Player() {
 }
 
 int Player::Update(GameMainScene* gMain) {
-	
-	if(input.CheckBtn(XINPUT_BUTTON_A)==TRUE)weapon->Shoot(gMain);
-
+	if (input.CheckBtn(XINPUT_BUTTON_A) == TRUE) {
+		weapon->Shoot(gMain);
+	}
 	input.InputUpdate();
 	//PlayerˆÚ“®ˆ—
 	if (input.CheckMovekey(XINPUT_BUTTON_DPAD_UP) == TRUE) {

@@ -8,9 +8,12 @@ public:
 	float speed; //(速度)
 	float angle[4]; //角度
 	float acceleration; //速度の変化量
-	float angulVelocity; //角度の変化量
+	float angulVelocity[3]; //角度の変化量
 	float getx;
 	float gety;
+	float bx;
+	float by[3];
+	bool once;
 	
 //メンバ関数
 	Bullet();

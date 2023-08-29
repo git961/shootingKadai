@@ -9,9 +9,11 @@ private:
 	float speed;//‘¬“x
 	float angle[3];//Šp“x
 	float acceleration;//‘¬“x‚Ì•Ï‰»—Ê
-	float angulVelocity;//Šp“x‚Ì•Ï‰»—Ê
+	float angulVelocity[3];//Šp“x‚Ì•Ï‰»—Ê
 	
-	double deg[3] = {45,90,135};
+	bool once;
+
+	double deg[3] = {-90,30,130};
 	double rad;
 
 public:
