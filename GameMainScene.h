@@ -15,6 +15,7 @@ public:
 	Player* player;
 	Enemy* enemy[6];
 	Bullet* bullet[20];
+	Bullet* bulletE[20];
 	XINPUT_STATE inpu;
 	Input input;
 

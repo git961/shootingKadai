@@ -22,17 +22,16 @@ void Bullet::Update() {
 	}
 	acceleration = speed * 3;
 		getx = getx + acceleration;
+		//location.x = getx;
 		for (int i = 0; i < 3; i++) {
 
 		by[i] = by[i] + angulVelocity[i];
+		//location.y= by[i];
 		}
-	
+	//locationここでいじってないのでスフィアコライダーが反応できてない
 }
 
 void Bullet::Draw()const {
-	//入れるangleを毎回全部入れてしまうと1つ1つのオブジェクトが
-	//三つのangleを持ってる状態になって意味がない
-	//３つに何が入ってるか見て見る
 //		DrawCircle(getx,gety, 5, 0xffff00, TRUE);
 
 	for (int i = 0; i < 3; i++) {

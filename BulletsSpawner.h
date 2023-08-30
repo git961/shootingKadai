@@ -5,7 +5,7 @@
 
 class BulletsSpawner
 {
-private:
+protected:
 	float speed;//‘¬“x
 	float angle[3];//Šp“x
 	float acceleration;//‘¬“x‚Ì•Ï‰»—Ê

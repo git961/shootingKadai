@@ -6,6 +6,7 @@ SphereCollider::SphereCollider() {
 	radius = 20;
 	location.x = 0;
 	location.y = 0;
+	
 }
 
 SphereCollider::~SphereCollider() {

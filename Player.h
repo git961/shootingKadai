@@ -4,7 +4,7 @@ class Player : public CharaBase
 {
 private:
 	int score;
-
+	int life;
 public:
 	//プロトタイプ宣言
 	Player();
@@ -12,7 +12,7 @@ public:
 
 	int Update(GameMainScene* gMain) override;
 	void Draw()const override;
-	int Hit() override;
+	int Hit(int hit) override;
 
 	int getplx();
 	int getply();

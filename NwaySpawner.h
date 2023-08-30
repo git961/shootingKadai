@@ -8,6 +8,7 @@ private:
 	//45度と135度の違い？
 	float angleDiff;//弾同士の角度差
 	//45開始でその後+45+45する？
+
 public:
 	NwaySpawner();
 	~NwaySpawner();

@@ -11,6 +11,7 @@ Player::Player() {
 	speed = 10;
 	location.x = 100;
 	location.y = 100;
+	life = 3;
 	weapon = new BulletsSpawner;
 }
 
@@ -72,8 +73,13 @@ void Player::Draw()const {
 	//	DrawBox(0+Movex, 0 + Movey, 20+Movex, 20+Movey, 0xffffff, TRUE);
 }
 
-int Player::Hit() {
-	
+int Player::Hit(int hit) {
+
+	if (hit == TRUE) {
+		location.x = 100;
+		location.y = 100;
+		life -= 1;
+	}
 	return 0;
 }
 

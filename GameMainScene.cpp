@@ -9,6 +9,10 @@ GameMainScene::GameMainScene() {
 		enemy[i] = new Enemy();
 	}
 	player = new Player();
+
+	for (int i = 0; i < 20; i++) {
+		bulletE[i] = new Bullet();
+	}
 }
 
 GameMainScene::~GameMainScene() {
@@ -26,7 +30,9 @@ void GameMainScene::Update() {
 	if (input.CheckBtn(XINPUT_BUTTON_A) == TRUE) {
 		SpawnBullet();
 	}
-
+	for (int i = 0; i < 5; i++) {
+		enemy[i]->Update(this);
+	}
 
 	player->Update(this);
 	for (int i = 0; i < 20; i++) {
@@ -35,18 +41,24 @@ void GameMainScene::Update() {
 		}
 	}
 
+	for (int i = 0; i < 20; i++) {
+		if (bulletE[i] != nullptr) {
+			bulletE[i]->Update();
+		}
+	}
 
+	HitCheck();
 }
 
 void GameMainScene::Draw() const{
 
 	
 	for (int i = 0; i < 3; i++) {
-		//enemy[i]->Draw();
+		enemy[i]->Draw();
 
-		if (player->CheckCollision(enemy[i]) == TRUE) {
-			DrawFormatString(100, 100, 0xffffff, "HIT!!!");
-		}
+		//if (player->CheckCollision(enemy[i]) == TRUE) {
+		//	DrawFormatString(100, 100, 0xffffff, "HIT!!!");
+		//}
 
 		if (bullet[i] != nullptr) {
 			bullet[i]->Draw();
@@ -57,7 +69,11 @@ void GameMainScene::Draw() const{
 	}
 	player->Draw();
 
-	
+	for(int i = 0; i < 20; i++) {
+		if (bulletE[i] != nullptr) {
+			bulletE[i]->Draw();
+		}
+	}
 
 }
 
@@ -66,10 +82,13 @@ void GameMainScene::HitCheck() {
 	for (int i = 0; i < 5; i++) {
 		player->CheckCollision(enemy[i]);
 		enemy[i]->CheckCollision(player);
-
-		if (player->CheckCollision(enemy[i]) == TRUE) {
-
+		
+		if (player->CheckCollision(bulletE[i]) == TRUE) {
+			player->Hit(TRUE);
 		}
+
+		
+
 
 	}
 };
